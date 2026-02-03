@@ -18,10 +18,11 @@ export const sendVerificationEmail = async (
     to: receiver,
     subject: "Verify your email",
     html: `
-<p style="margin-top:40px; font-size:32px; color:black;">
-hiiiii huurhnu🤎
-</p>
-</div>
-    `,
+<a href="${verifyEmail}">
+  <div style="width:300px;height:300px;background-color:blue;color:white;display:flex;align-items:center;justify-content:center;">
+    VERIFY EMAIL
+  </div>
+</a>
+`,
   });
 };
