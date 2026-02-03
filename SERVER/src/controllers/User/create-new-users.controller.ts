@@ -1,7 +1,8 @@
 import { UserModel } from "../../schema";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-
+import jwt from "jsonwebtoken";
+import { sendVerificationEmail } from "../../utils/mail-utils";   
 export const createNewUser = async (req: Request, res: Response) => {
   try {
     const { email, password, phoneNumber, address, role } = req.body;
@@ -14,6 +15,18 @@ export const createNewUser = async (req: Request, res: Response) => {
       phoneNumber,
       address,
       role,
+    });
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET!, {
+      expiresIn: "1d",
+    });
+    await sendVerificationEmail(
+      email,
+      `${process.env.TEST_API}/authentication/verify-email?token=${token}`,
+    );
+    return res.status(201).json({
+      success: true,
+      message: "Verification email sent",
+      data: newUser,
     });
     await newUser.save;
     res

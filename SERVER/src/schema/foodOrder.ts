@@ -5,7 +5,7 @@ enum foodOrderStatus {
   CANCELED = "canceled",
   DELIVERED = "delivered",
 }
-
+ 
 const foodOrderItemSchema = new Schema({
   food: { type: Schema.Types.ObjectId, ref: "Food", required: true },
   quantity: { type: Number, required: true, default: 1 },

@@ -1,6 +1,5 @@
 import { Food_Category_Schema } from "../../schema";
 import { Request, Response } from "express";
-
 export const createNewCategory = async (res: Response, req: Request) => {
   try {
     const { categoryName } = req.body;
