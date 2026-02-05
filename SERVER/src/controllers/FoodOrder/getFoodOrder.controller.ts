@@ -5,7 +5,7 @@ export const getFoodOrder = async (req: Request, res: Response) => {
   try {
     const getFoodOrderAPI = await FoodOrderModel.find();
     res.status(200).send({
-      message: "Food Category fetched succesfully",
+      message: " succesfully",
       data: getFoodOrderAPI,
     });
   } catch (error) {

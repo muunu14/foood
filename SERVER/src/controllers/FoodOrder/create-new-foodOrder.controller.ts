@@ -12,7 +12,7 @@ export const postFoodOrder = async (req: Request, res: Response) => {
     });
 
     res.status(200).send({
-      message: "Food Category created succesfully",
+      message: " Category created succesfully",
       data: postFoodOrderAPI,
     });
   } catch (error) {

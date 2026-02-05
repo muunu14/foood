@@ -9,13 +9,12 @@ import { foodOrderRouter } from "./routers";
 configDotenv();
 
 const app: Application = express();
-
 const port = 8000;
 
 app.use(cors());
 app.use(express.json());
 
-app.use("/user", userRouter);
+app.use("/authentication", userRouter);
 app.use("/food", foodRouter);
 app.use("/food-orders", foodOrderRouter);
 

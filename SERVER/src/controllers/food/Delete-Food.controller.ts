@@ -7,7 +7,7 @@ export const deleteFoodList = async (req: Request, res: Response) => {
 
     const deleted = await FoodModel.findOneAndDelete(id);
 
-    res.status(200).send({ message: "Deleted Succesfully", data: deleted });
+    res.status(200).send({ message: "Deleted", data: deleted });
   } catch (error) {
     res.status(200).send(console.error(error));
   }

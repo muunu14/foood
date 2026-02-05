@@ -19,10 +19,10 @@ export const SignIncontroller = async (req: Request, res: Response) => {
       password: hashedPassword,
       isVerified: false,
     });
+    res.status(200).send({ message: "success", data: newUser });
   } catch (error) {
     return res.status(500).json({
       message: "Internal server error",
-
       error,
     });
   }

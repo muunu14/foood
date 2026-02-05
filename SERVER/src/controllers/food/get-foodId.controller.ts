@@ -11,7 +11,7 @@ export const getFoodById = async (req: Request, res: Response) => {
       price,
     });
 
-    res.status(200).send({ message: "food appeared", data: getFood });
+    res.status(200).send({ message: "sdsdfs", data: getFood });
   } catch (error) {
     console.error(error);
     res.status(200).send(error);
