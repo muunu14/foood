@@ -7,7 +7,7 @@ export const verifyEmailController = async (req: Request, res: Response) => {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET!) as {
       email: string;
     };
-    console.log(decodedToken);
+
     const verifiedUser = await UserModel.findOneAndUpdate(
       { email: decodedToken.email },
       { isVerified: true },
