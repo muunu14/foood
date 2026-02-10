@@ -13,6 +13,8 @@ type User = {
   orderedFoods: Types.ObjectId[];
   ttl: Date;
   isVerified: boolean;
+  resetToken: String;
+  resetTokenExp: Date;
 };
 
 const UserSchema = new Schema<User>(
@@ -46,9 +48,9 @@ const UserSchema = new Schema<User>(
       otp: { type: String },
       otpExpires: { type: Date },
     },
+    // resetToken
   },
   { timestamps: true },
 );
-
 export const UserModel: Model<User> =
   models.Users || model<User>("Users", UserSchema);

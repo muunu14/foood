@@ -3,21 +3,19 @@ import { UserModel } from "../../schema";
 import bcrypt from "bcrypt";
 export const resetPassword = async (req: Request, res: Response) => {
   try {
-    const { email, newPassword } = req.body;
-    if (!email || !newPassword) {
-      return res.status(400).json({ message: "required" });
-    }
-    const user = await UserModel.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: "invalid request" });
-    }
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    user.password = hashedPassword;
-
+    const { token, newPassword } = req.body;
+    const user = await UserModel.findOne({
+      resetToken: token,
+      resetTokenExp: { user: new Date() },
+    });
+    if (!user)
+      return res.status(400).json({ message: "Invalid or expired token" });
+    user.password = await bcrypt.hash(newPassword, 10);
+    // user.resetToken = undefined;
+    // user.resetTokenExp = undefined;
     await user.save();
-
-    return res.status(200).json({ message: "password success" });
+    res.json({ message: "Password successfully reset" });
   } catch (err) {
-    return res.status(500).json({ message: "server error" });
+    res.status(500).json({ message: "Server error" });
   }
 };
