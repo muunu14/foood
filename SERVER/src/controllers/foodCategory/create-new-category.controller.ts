@@ -1,11 +1,29 @@
-import { Food_Category_Schema } from "../../schema";
 import { Request, Response } from "express";
-export const createNewCategory = async (res: Response, req: Request) => {
+import { CategoryModel} from "../../routers";
+export const createFoodCategory = async (req: Request, res: Response) => {
   try {
     const { categoryName } = req.body;
-    const category = await Food_Category_Schema.create(categoryName);
-    res.status(200).json({ message: "hrrrr" });
+    if (!categoryName || typeof categoryName !== "string") {
+      return res.status(400).send({ message: "categoryName is required" });
+    }
+    const exists = await CategoryModel.findOne({
+      categoryName: categoryName.trim(),
+    });
+    if (exists) {
+      return res.status(409).send({ message: "Category already exists" });
+    }
+    const category = await CategoryModel.create({
+      categoryName: categoryName.trim(),
+    });
+    return res.status(201).send({
+      message: "Category created",
+      data: category,
+    });
   } catch (error) {
-    res.status(200).json({ message: "sssssss", error });
+    console.error(error);
+    return res.status(500).send({
+      message: "Error creating category",
+      error,
+    });
   }
 };
