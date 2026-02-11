@@ -10,7 +10,6 @@ export const getFoodById = async (req: Request, res: Response) => {
       name,
       price,
     });
-
     res.status(200).send({ message: "sdsdfs", data: getFood });
   } catch (error) {
     console.error(error);

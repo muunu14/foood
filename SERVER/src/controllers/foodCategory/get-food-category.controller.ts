@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
-import { CategoryModel } from "../../routers";
+import { CategoryModel } from "../../schema";
 
 export const getFoodCategory = async (_req: Request, res: Response) => {
   try {
-    const categories = await CategoryModel .find().sort({ createdAt: -1 });
+    const categories = await CategoryModel.find().sort({ createdAt: -1 });
     return res.status(200).send({
       data: categories,
     });

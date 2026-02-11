@@ -1,4 +1,4 @@
-export * from "./create-new-category.controller";
-// export * from "./PatchFoodCategory.controller";
-// export * from "./getFoodCategory.controller";
-// export * from "./deleteFoodCategory.controller";
+// export * from "./create-new-category.controller";
+// export * from "./delete-category.controller"
+// export * from "./get-food-category.controller"
+// export * from "./update-category.controller"

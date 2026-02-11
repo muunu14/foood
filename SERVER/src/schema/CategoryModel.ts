@@ -1,21 +1,17 @@
-// import { models, model, Schema, ObjectId } from "mongoose";
+import { models, model, Schema, ObjectId } from "mongoose";
 
-// type FoodCategory = {
-//   _id: ObjectId;
-//   categoryName: String;
-//   createdAt: Date;
-//   updatedAt: Date;
-// };
+export type FoodCategory = {
+  _id: ObjectId;
+  categoryName: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
-// export const 
-//  = new Schema<FoodCategory>(
-//   {
-//     categoryName: { type: String, required: true },
-//     createdAt: { type: Date, default: Date.now },
-//     updatedAt: { type: Date, default: Date.now },
-//   },
-//   { _id: false },
-// );
+const FoodCategorySchema = new Schema<FoodCategory>({
+  categoryName: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
+});
 
-// export const Food_Category_Schema =
-//   models["Foods"] || model("Foods", FoodCategorySchema);
+export const CategoryModel =
+  models.Foods || model<FoodCategory>("Foods", FoodCategorySchema);

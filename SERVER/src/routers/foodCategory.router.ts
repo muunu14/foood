@@ -1,13 +1,11 @@
-import { Schema, model } from "mongoose";
-const CategorySchema = new Schema(
-  {
-    categoryName: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
-  },
-  { timestamps: true },
-);
-export const CategoryModel = model("Category", CategorySchema);
+// import { Router } from "express";
+// import { createFoodCategory } from "../controllers/foodCategory/create-new-category.controller";
+// import { getFoodCategory } from "../controllers/foodCategory/get-food-category.controller";
+// import { updateCategory } from "../controllers/foodCategory/update-category.controller";
+// import { deleteCategory } from "../controllers/foodCategory/delete-category.controller";
+// const categoryRouter = Router();
+// categoryRouter.post("/createCategory", createFoodCategory);
+// categoryRouter.get("/getCategory", getFoodCategory);
+// categoryRouter.put("/:foodCategoryId", updateCategory);
+// categoryRouter.delete("/:foodCategoryId", deleteCategory);
+// export default categoryRouter;
