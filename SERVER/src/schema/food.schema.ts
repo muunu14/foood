@@ -1,26 +1,29 @@
-import { model, models, Schema, Types } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 
-export type Food = {
-  foodName: string;
-  price: number;
-  image: string;
-  ingredients: string;
-  category: Types.ObjectId;
-};
-
-const foodSchema = new Schema<Food>(
+const FoodSchema = new Schema(
   {
-    foodName: { type: String, required: true },
-    price: { type: Number, required: true },
-    image: { type: String, required: true },
-    ingredients: { type: String, required: true },
-    category: {
-      type: Schema.Types.ObjectId,
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    categoryId: {
+      type: Types.ObjectId,
       ref: "Category",
       required: true,
     },
+    image: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
-export const FoodModel = models.Food || model<Food>("Food", foodSchema);
+export const FoodModel = model("Food", FoodSchema);
