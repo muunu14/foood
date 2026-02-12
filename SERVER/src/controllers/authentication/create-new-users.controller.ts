@@ -36,6 +36,7 @@ export const createNewUser = async (req: Request, res: Response) => {
       success: false,
       message: "Serveriin aldaa",
       error,
+      
     });
   }
 };
