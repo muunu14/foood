@@ -8,7 +8,7 @@ export const createNewUser = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     const existingUser = await UserModel.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({
+      return res.status(400).send({
         success: true,
         message: "Hereglegch ali hediin burtgeltei baina",
       });
@@ -26,13 +26,13 @@ export const createNewUser = async (req: Request, res: Response) => {
       email,
       `${process.env.CLIENT_API}/authentication/verify-email?token=${token}`,
     );
-    return res.status(201).json({
+    return res.status(201).send({
       success: true,
       message: "Verification email sent",
       data: newUser,
     });
   } catch (error) {
-    return res.status(500).json({
+    return res.status(500).send({
       success: false,
       message: "Serveriin aldaa",
       error,
