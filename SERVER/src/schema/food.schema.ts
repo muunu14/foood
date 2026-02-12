@@ -14,7 +14,7 @@ const FoodSchema = new Schema(
     categoryId: {
       type: Types.ObjectId,
       ref: "Category",
-      required: false,
+      required: true,
     },
     image: {
       type: String,
