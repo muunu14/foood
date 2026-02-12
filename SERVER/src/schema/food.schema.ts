@@ -22,6 +22,9 @@ const FoodSchema = new Schema(
     description: {
       type: String,
     },
+    foodId: {
+      type: String,
+    },
   },
   { timestamps: true },
 );

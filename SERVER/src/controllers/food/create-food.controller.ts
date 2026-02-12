@@ -27,3 +27,12 @@ export const createFood = async (req: Request, res: Response) => {
     });
   }
 };
+// {
+//  "user": "65a999abc111def222333444",
+//  "totalPrice": 25000,
+//  "foodItems": [
+//    {
+//      "food": "Burger",
+//      "quantity": 2
+//    }
+//  ],
