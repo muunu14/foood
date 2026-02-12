@@ -14,7 +14,7 @@ const FoodSchema = new Schema(
     categoryId: {
       type: Types.ObjectId,
       ref: "Category",
-      required: true,
+      required: false,
     },
     image: {
       type: String,
@@ -23,7 +23,7 @@ const FoodSchema = new Schema(
       type: String,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const FoodModel = model("Food", FoodSchema);
