@@ -5,11 +5,9 @@ export const updateFood = async (req: Request, res: Response) => {
   try {
     const { foodId } = req.params;
 
-    const updated = await FoodModel.findByIdAndUpdate(
-      foodId,
-      req.body,
-      { new: true }
-    );
+    const updated = await FoodModel.findByIdAndUpdate(foodId, req.body, {
+      new: true,
+    });
 
     if (!updated) {
       return res.status(404).send({ message: "Food not found" });

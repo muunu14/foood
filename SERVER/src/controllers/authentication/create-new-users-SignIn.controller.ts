@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { UserModel } from "../../schema";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { sendVerificationEmail } from "../../utils/mail-utils";
 export const SignIncontroller = async (req: Request, res: Response) => {
   try {
     const { password, email } = req.body;

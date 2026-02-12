@@ -3,7 +3,6 @@ enum UserRole {
   USER = "USER",
   ADMIN = "ADMIN",
 }
-
 type User = {
   email: string;
   password: string;
@@ -16,7 +15,6 @@ type User = {
   resetToken: String;
   resetTokenExp: Date;
 };
-
 const UserSchema = new Schema<User>(
   {
     email: { type: String, required: true },
@@ -29,26 +27,22 @@ const UserSchema = new Schema<User>(
       enum: Object.values(UserRole),
       default: UserRole.USER,
     },
-
     orderedFoods: {
       type: [Schema.Types.ObjectId],
       ref: "Food",
       default: [],
     },
-
     ttl: {
       type: Date,
       required: true,
       default: () => new Date(Date.now() + 1000 * 60 * 60),
     },
-
     isVerified: {
       type: Boolean,
       default: false,
       otp: { type: String },
       otpExpires: { type: Date },
     },
-    // resetToken
   },
   { timestamps: true },
 );
