@@ -25,7 +25,6 @@ export const patchfoodcontroller = async (req: Request, res: Response) => {
     if (!updatedFood) {
       return res.status(404).json({ message: "Food not found" });
     }
-
     return res.status(200).json({
       message: "Food updated successfully",
       data: updatedFood,
