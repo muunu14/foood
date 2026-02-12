@@ -3,5 +3,5 @@ import { createFood, deleteFoodList } from "../controllers/food";
 
 export const foodRouter = Router();
 
-foodRouter.post("/create-food", createFood);
+foodRouter.post("/createfood", createFood);
 foodRouter.delete("/deleteList", deleteFoodList);
